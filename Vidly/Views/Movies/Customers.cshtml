@@ -1,0 +1,29 @@
+﻿@model Vidly.ViewModels.RandomViewModel
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>List of Customers</h1>
+@Html.ActionLink("Edit Customer", "NewCustomer", "Movies", new { @class = "btn btn-default" })
+<br />
+<table class="table table-­bordered table-hover">
+
+    <tr>
+        <th>Name</th>
+        <th>Id</th>
+        <th>Discount</th>
+    </tr>
+    @foreach (var Customer in Model.customers)
+    {
+
+
+        <tr>
+            <td>@Html.ActionLink(@Customer.name, "EditCustomer", "Movies", new { id = @Customer.id, name = @Customer.name }, null)</td>
+            <td>@Customer.id</td>
+            <td>@Customer.membershipType.membershipName</td>
+
+        </tr>
+
+    }
+</table>
+
